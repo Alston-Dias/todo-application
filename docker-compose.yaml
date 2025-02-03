@@ -18,7 +18,7 @@ services:
      container_name: mysql-db-1
      restart: always
      environment:
-       MYSQL_ROOT_PASSWORD: Root@123
+       MYSQL_ROOT_PASSWORD: Nuvelabs123$
        MYSQL_DATABASE: tododb
      ports:
        - "3307:3306"
