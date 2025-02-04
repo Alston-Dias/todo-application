@@ -24,6 +24,7 @@ services:
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Nuvelabs123$
+    restart: always
       
   mysql-db:
      image: mysql:8
