@@ -9,6 +9,7 @@ networks:
 
 volumes:
   mysql-data:
+    external: true
 
 services:
   todo-application:
