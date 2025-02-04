@@ -2,6 +2,14 @@
 
 version: '3.8'
 
+networks:
+  todo-network:
+    driver: bridge
+    external: true
+
+volumes:
+  mysql-data:
+
 services:
   todo-application:
     image: todo-application-image:latest
@@ -12,11 +20,14 @@ services:
       - todo-network
     depends_on:
       - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdc:mysql://mysql-db:3306/tododb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Nuvelabs123$
       
   mysql-db:
-     image: mysql:latest
+     image: mysql:8
      container_name: mysql-db-1
-     restart: always
      environment:
        MYSQL_ROOT_PASSWORD: Nuvelabs123$
        MYSQL_DATABASE: tododb
@@ -27,10 +38,3 @@ services:
      volumes:
        - mysql-data:/var/lib/mysql
 
-networks:
-  todo-network:
-    driver: bridge
-
-volumes:
-  mysql-data:
-      
